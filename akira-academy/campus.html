@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akira Academy | Campus.Map</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/cyberpunk.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <style>
+        .page-header {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        
+        .campus-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .map-wrapper {
+            position: relative;
+            border: 2px solid var(--neon-blue);
+            padding: 10px;
+            background: var(--bg-panel);
+            border-radius: 4px;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            filter: contrast(1.2) saturate(1.5);
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 243, 255, 0.05),
+                rgba(0, 243, 255, 0.05) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        
+        .locations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .campus-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <main class="container">
+        <header class="page-header">
+            <h1 class="random-glitch">Campus.Nav_System</h1>
+            <p class="text-muted">Sélectionnez un secteur pour établir une connexion.</p>
+        </header>
+        
+        <div class="campus-container">
+            <div class="map-wrapper cybr-card">
+                <img src="assets/img/campus.png" alt="Campus Map" class="map-image">
+                <div class="map-overlay"></div>
+            </div>
+            
+            <div class="locations-list" id="campus-locations">
+                <!-- Locations will be injected here by campus.js -->
+                <div class="text-center text-muted">Initialisation de la matrice...</div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/campus.js"></script>
+    <script src="assets/js/effects.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Cyberpunk specific UI components */
+
+/* Buttons */
+.cybr-btn {
+    --primary: var(--neon-blue);
+    --shadow-primary: var(--glow-blue);
+    --color: var(--text-dark);
+    --font-size: 1.2rem;
+    --height: 50px;
+    
+    color: var(--color);
+    font-family: var(--font-display);
+    font-size: var(--font-size);
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: var(--primary);
+    border: none;
+    position: relative;
+    padding: 0 30px;
+    height: var(--height);
+    line-height: var(--height);
+    display: inline-block;
+    cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+}
+
+.cybr-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--neon-pink);
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.cybr-btn:hover {
+    background: var(--neon-pink);
+    color: var(--text-main);
+    box-shadow: var(--glow-pink);
+}
+
+.cybr-btn:hover::after {
+    background: var(--neon-blue);
+}
+
+.cybr-btn.pink {
+    --primary: var(--neon-pink);
+    color: var(--text-main);
+}
+.cybr-btn.pink:hover {
+    background: var(--neon-purple);
+}
+
+/* Cards */
+.cybr-card {
+    background: var(--bg-panel);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-top: 3px solid var(--neon-blue);
+    padding: 2rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-med);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.cybr-card::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 21px;
+    height: 21px;
+    background: var(--neon-blue);
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    transition: var(--transition-med);
+}
+
+.cybr-card:hover {
+    border-color: var(--neon-pink);
+    border-top-color: var(--neon-pink);
+    transform: translateY(-5px);
+    box-shadow: var(--glow-blue);
+}
+
+.cybr-card:hover::before {
+    background: var(--neon-pink);
+}
+
+/* Inputs */
+.cybr-input {
+    width: 100%;
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid var(--text-muted);
+    border-bottom: 2px solid var(--neon-blue);
+    padding: 1rem;
+    color: var(--neon-blue);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.cybr-input:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 4px 10px rgba(255, 0, 234, 0.2);
+}
+
+.cybr-input::placeholder {
+    color: var(--text-muted);
+    font-family: var(--font-body);
+}
+
+/* Badges */
+.cybr-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--bg-main);
+    background: var(--neon-purple);
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+    letter-spacing: 1px;
+}
+
+/* Utilities */
+.text-blue { color: var(--neon-blue); }
+.text-pink { color: var(--neon-pink); }
+.text-purple { color: var(--neon-purple); }
+
+.glow-text {
+    text-shadow: var(--glow-blue);
+}

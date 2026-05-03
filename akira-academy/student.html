@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akira Academy | User.Profile</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/cyberpunk.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <style>
+        .dashboard-header {
+            padding: 3rem 0;
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--glow-pink);
+            position: relative;
+        }
+        
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,0,234,0.2) 0%, transparent 100%);
+        }
+        
+        .user-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--neon-blue);
+        }
+        
+        .user-info .alias {
+            font-family: var(--font-display);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+        
+        .stats-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(10, 10, 15, 0.6);
+            border-left: 3px solid var(--neon-blue);
+        }
+        
+        .stat-item.pink { border-left-color: var(--neon-pink); }
+        .stat-item.purple { border-left-color: var(--neon-purple); }
+        
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 5px;
+            position: relative;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .activity-date {
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div id="navbar-placeholder"></div>
+    
+    <main class="container">
+        <div class="dashboard-header">
+            <div class="avatar-container">
+                <img src="assets/img/student.png" alt="Student Avatar" id="profile-avatar">
+            </div>
+            <div class="user-info">
+                <span class="cybr-badge">Status: Online</span>
+                <h1 id="profile-name">Loading...</h1>
+                <div class="alias">Alias: <span id="profile-alias" class="text-pink">--</span></div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <aside class="stats-panel cybr-card">
+                <h3 class="text-purple" style="margin-bottom: 1rem;">System.Stats</h3>
+                
+                <div class="stat-item">
+                    <span class="text-muted">Niveau</span>
+                    <strong class="text-blue" id="stat-level">--</strong>
+                </div>
+                <div class="stat-item pink">
+                    <span class="text-muted">Classe</span>
+                    <strong class="text-pink" id="stat-class">--</strong>
+                </div>
+                <div class="stat-item purple">
+                    <span class="text-muted">Crédits</span>
+                    <strong class="text-purple" id="stat-credits">-- ¤</strong>
+                </div>
+                
+                <button class="cybr-btn pink" style="margin-top: 1rem; width: 100%; height: 40px; line-height: 40px; font-size: 0.9rem;">Upgrade Gear</button>
+            </aside>
+            
+            <div class="main-panel">
+                <div class="cybr-card" style="margin-bottom: 2rem;">
+                    <h3 class="text-blue" style="margin-bottom: 1.5rem;">Neural.Skills</h3>
+                    <div id="skills-container">
+                        <!-- Skills injected by JS -->
+                    </div>
+                </div>
+                
+                <div class="cybr-card">
+                    <h3 class="text-blue" style="margin-bottom: 1.5rem;">Recent.Activity_Log</h3>
+                    <ul class="activity-list" id="activity-container">
+                        <!-- Activity injected by JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/effects.js"></script>
+    
+    <!-- Inline script for student page logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const student = academyData.student;
+            
+            // Populate Header
+            document.getElementById('profile-name').innerText = student.name;
+            document.getElementById('profile-alias').innerText = student.alias;
+            document.getElementById('profile-avatar').src = student.avatar;
+            
+            // Populate Stats
+            document.getElementById('stat-level').innerText = student.level;
+            document.getElementById('stat-class').innerText = student.class;
+            document.getElementById('stat-credits').innerText = student.credits;
+            
+            // Populate Skills
+            const skillsContainer = document.getElementById('skills-container');
+            student.skills.forEach(skill => {
+                skillsContainer.innerHTML += `
+                    <div class="skill-item">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>${skill.name}</span>
+                            <span class="text-pink">${skill.level}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: ${skill.level}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Populate Activity
+            const activityContainer = document.getElementById('activity-container');
+            student.recentActivity.forEach(act => {
+                activityContainer.innerHTML += `
+                    <li class="activity-item">
+                        <span class="activity-date">[${act.date}]</span>
+                        <span>${act.action}</span>
+                    </li>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
