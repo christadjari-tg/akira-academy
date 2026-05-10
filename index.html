@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akira Academy | System.Init</title>
+    <meta name="description" content="Bienvenue à l'Akira Academy, la première académie cyberpunk du métavers.">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/cyberpunk.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <style>
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('assets/img/hero.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 50%, rgba(10,10,15,0.2) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .features-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="cybr-badge" style="margin-bottom: 1rem;">Version 2.0.77</span>
+                    <h1 class="glow-text">The Future is <br><span class="text-pink glitch-effect" data-text="Written in Code">Written in Code</span></h1>
+                    <p>Rejoignez l'Akira Academy. Maîtrisez le netrunning, l'ingénierie cybernétique et façonnez l'avenir de Neo-Tokyo.</p>
+                    <div class="hero-buttons">
+                        <a href="campus.html" class="cybr-btn">Explore Campus</a>
+                        <a href="student.html" class="cybr-btn pink">Login System</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features-section container">
+            <h2 class="section-title random-glitch">System.Features</h2>
+            <div class="features-grid">
+                <div class="cybr-card">
+                    <div class="feature-icon">👁️‍🗨️</div>
+                    <h3 class="text-blue">Neural Integration</h3>
+                    <p class="text-muted" style="margin-top: 1rem;">Connexion directe au metaverse. Nos cours sont téléchargés directement dans votre cortex pour un apprentissage accéléré.</p>
+                </div>
+                <div class="cybr-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="text-pink">Cyber-Security</h3>
+                    <p class="text-muted" style="margin-top: 1rem;">Apprenez à déjouer les ICE les plus complexes et protégez vos données contre les corpos. Devenez un runner d'élite.</p>
+                </div>
+                <div class="cybr-card">
+                    <div class="feature-icon">🦾</div>
+                    <h3 class="text-purple">Bio-Engineering</h3>
+                    <p class="text-muted" style="margin-top: 1rem;">Concevez les augmentations de demain. De la prothèse basique aux implants neuronaux militaires de grade S.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/effects.js"></script>
+</body>
+</html>
